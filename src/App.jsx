@@ -3,6 +3,7 @@ import './App.css'
 import Options from './components/Options'
 import Notification from './components/Notification'
 import Feedback from './components/Feedback'
+import Description from './components/Description'
 
 function App() {
   const initialFeedback = {
@@ -30,18 +31,16 @@ function App() {
   };
     
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
   
   return (
     <>
-      <div>
-        <h1>Sip Happens Café</h1>
-        <p>Please leave your feedback about our service by selecting one of the options below.</p>
-      </div>
+      <Description/>
       <Options updateFeedback={updateFeedback} resetFeedback={resetFeedback} totalFeedback={totalFeedback} />
       {totalFeedback === 0 && <Notification totalFeedback={totalFeedback} />}
-      {totalFeedback > 0 && <Feedback feedback={feedback} totalFeedback={totalFeedback} />}
+      {totalFeedback > 0 && <Feedback feedback={feedback} totalFeedback={totalFeedback} positiveFeedback={positiveFeedback} />}
     </>
-  )
+    )
 }
 
 export default App

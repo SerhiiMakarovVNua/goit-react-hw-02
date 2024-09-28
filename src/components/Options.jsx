@@ -1,4 +1,4 @@
-const Options = ({updateFeedback, resetFeedback={resetFeedback}, totalFeedback}) => {
+const Options = ({updateFeedback, resetFeedback, totalFeedback}) => {
 
   return (
       <div>
